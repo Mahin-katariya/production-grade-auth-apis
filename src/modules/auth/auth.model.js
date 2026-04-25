@@ -47,4 +47,6 @@ const userSchema = new mongoose.Schema({
         type: Date,
         select: false
     }
-})
+}, {timestamps: true});
+
+export default mongoose.model('User', userSchema);

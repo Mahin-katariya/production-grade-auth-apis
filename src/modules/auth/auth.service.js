@@ -62,7 +62,7 @@ const refresh = async (token) => {
     if(!token) throw APIError.unauthorized("Refresh token missing");
     const decoded = verifyRefreshToken(token)
 
-    const user = await User.findById(decoded.id).select("+refreshToken");src/modu
+    const user = await User.findById(decoded.id).select("+refreshToken");
 
     if(!user) throw APIError.unauthorized("User not found");
 
@@ -102,4 +102,4 @@ const forgotPassword = async (email) => {
     // TODO: mail bhejna nahi aata
 }
 
-export {register}
+export {register, login, refresh, forgotPassword, logout}

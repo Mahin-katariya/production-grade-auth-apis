@@ -2,20 +2,20 @@ import crypto from "crypto"
 import jwt from "jsonwebtoken"
 
 const generateAccessToken = (payload) => {
-    jwt.sign(payload, process.env.JWT_ACCESS_SECRET, process.env.JWT_ACCESS_EXPIRES_IN)
+    return jwt.sign(payload, process.env.JWT_ACCESS_SECRET, process.env.JWT_ACCESS_EXPIRES_IN)
 
 }
 
 const verifyAccessToken = (token) => {
-    jwt.verify(token, process.env.JWT_ACCESS_SECRET)
+    return jwt.verify(token, process.env.JWT_ACCESS_SECRET)
 }
 
 const generateRefreshToken = (payload) => {
-    jwt.sign(payload, process.env.JWT_REFRESH_SECRET, process.env.JWT_REFRESH_EXPIRES_IN)
+    return jwt.sign(payload, process.env.JWT_REFRESH_SECRET, process.env.JWT_REFRESH_EXPIRES_IN)
 }
 
 const verifyRefreshToken = (token) => {
-    jwt.verify(token, process.env.JWT_REFRESH_SECRET)
+    return jwt.verify(token, process.env.JWT_REFRESH_SECRET)
 }
 
 const generateResetToken = () => {

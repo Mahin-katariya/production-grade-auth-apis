@@ -62,7 +62,7 @@ const refresh = async (token) => {
     if(!token) throw APIError.unauthorized("Refresh token missing");
     const decoded = verifyRefreshToken(token)
 
-    const user = await User.findById(decoded.id).select("+refreshToken");
+    const user = await User.findById(decoded.id).select("+refreshToken");src/modu
 
     if(!user) throw APIError.unauthorized("User not found");
 

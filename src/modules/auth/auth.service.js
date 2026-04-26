@@ -26,9 +26,9 @@ const register = async ({name, email, password, role}) => {
     return userObj
 }
 
- const hashToken = (token) => {
-     return crypto.createHash("sha256").update(token).digest("hex")
- } 
+const hashToken = (token) => {
+    return crypto.createHash("sha256").update(token).digest("hex")
+} 
 
 const login = async ({email, password}) => {
     // take email and find user in DB
@@ -37,6 +37,10 @@ const login = async ({email, password}) => {
     const user = await User.findOne({email}).select("+password");
 
     if(!user) throw APIError.unauthorized("Invalid email or password");
+
+    // check if password is correct or not.
+    const isValidPassword = await user.comparePassword(password);
+    if(!isValidPassword) throw APIError.unauthorized();
 
     if(!user.isVerified){
         throw APIError.forbidden("Verify your email")

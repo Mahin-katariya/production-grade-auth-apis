@@ -10,6 +10,8 @@ const validate = (Dtoclass) => {
         // clean the req.body before passing it ahead!
         req.body = value
 
-        next()
+        next()  
     }
 }
+
+export default validate

@@ -14,6 +14,10 @@ class APIError extends Error {
         return new APIError(401, message)
     }
 
+    static conflict(message = "Conflict") {
+        return new APIError(409, message)
+    }
+
 }
 
 export default APIError
